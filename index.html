@@ -2,11 +2,111 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Description of the page content" /> 
     <title>devCodeCamp &middot; Most Wanted</title>
+      <style>
+
+         div.header{
+            background-color: #555;
+            color: white;
+            margin: 10px 0 10px 0;
+            padding: 20px;
+         }
+           #mySidenav a {
+                position: absolute;
+                left: -80px;
+                transition: 0.3s;
+                padding: 25px;
+                width: 100px;
+                text-decoration: none;
+                font-size: 20px;
+                color: white;
+                border-radius: 0 5px 5px 0;
+           }
+           #mySidenav a:hover {
+            left: 0;
+           }
+           #goal2 {
+            top: 160px;
+            background-color: #4CAF50;
+           }
+           #goal3 {
+            top:  240px;
+            background-color: #2196F3;
+           }
+           #goal4 {
+            top:  320px;
+            background-color: #f44336;
+           }
+           #goal5{
+            top: 400px;
+            background-color: #555;
+           }
+      </style>
+
   </head>
   <body>
-    <button onclick="app(data)">Start Searching</button>
+
+
+      <div id="mySidenav"  class="sidenav">
+          <a href="#" id="goal2">Goal 2</a>
+          <a href="#" id="goal3">Goal 3</a>
+          <a href="#" id="goal4">Goal 4</a>
+          <a href="#" id="goal5">Goal 5</a>
+      </div>
+          
+      
+      <div style="margin-left">
+          <div class="header">
+          <h1><bold>MOST WANTED</bold></h1>
+          </div>
+
+           <button onclick="app(data)">Start Searching</button>
+      </div>     
     <script src="data.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
