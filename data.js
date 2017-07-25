@@ -287,3 +287,74 @@ const data = [
 		"currentSpouse": null
 	}
 ];
+
+function getEyeColor(eyeColor){
+	var eyeColorResults=data.filter(function(element){
+		 if(element.eyeColor == eyeColor){
+		  	console.log(" " + element.firstName + " " + element.lastName + " " + eyeColor);
+		  	return true;
+		  }
+		  else{
+		  return false;
+		  }
+	});   
+}
+
+
+function getHeight(height){
+     var heightResults=data.filter(function(element){
+    	if(element.height == height){
+			console.log(" " + element.firstName + " " + element.lastName + " " + height);
+			return true;
+		}
+		else{
+			return false;
+		}
+	}); 
+}
+
+function getAge(age){
+	var ageResults=data.filter(function(element){
+    	if(element.age == age){
+		    console.log(" " + element.firstName + " " + element.lastName + " " + age);
+		    return true;
+		}
+		else{
+			return false;
+		}
+	});
+}
+
+function getWeight(weight){
+	var weightResults=data.filter(function(element){
+		if(element.weight == weight){
+			console.log(" " + element.firstName + " " + " " + element. lastName + " " height);
+			return true;
+		}
+		else{
+			return false;
+		}
+	});
+}
+
+function getOccupation(occupation){
+	var occupationResults=data.filter(function(element){
+		if(element.occupation == occupation){
+			cosole.log(" " + firstName + " " + lastName + " " + occupation)
+			return true;
+		}
+		else{
+			return false;
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
+
