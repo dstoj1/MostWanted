@@ -290,7 +290,7 @@ const data = [
 
 function getEyeColor(eyeColor){
 	var eyeColorResults=data.filter(function(element){
-		 if(element.eyeColor == eyeColor){
+		 if(element.eyeColor ===  eyeColor){
 		  	console.log(" " + element.firstName + " " + element.lastName + " " + eyeColor);
 		  	return true;
 		  }
@@ -303,7 +303,7 @@ function getEyeColor(eyeColor){
 
 function getHeight(height){
      var heightResults=data.filter(function(element){
-    	if(element.height == height){
+    	if(element.height === height){
 			console.log(" " + element.firstName + " " + element.lastName + " " + height);
 			return true;
 		}
@@ -315,7 +315,8 @@ function getHeight(height){
 
 function getAge(age){
 	var ageResults=data.filter(function(element){
-    	if(element.age == age){
+    	var birthArray = element.dob.split("/");
+    	if(convertToAge(new Date(birthArray[2], birthArray[0], birthArray[1])) === age){
 		    console.log(" " + element.firstName + " " + element.lastName + " " + age);
 		    return true;
 		}
@@ -324,11 +325,11 @@ function getAge(age){
 		}
 	});
 }
-
+getAge(68);
 function getWeight(weight){
 	var weightResults=data.filter(function(element){
-		if(element.weight == weight){
-			console.log(" " + element.firstName + " " + " " + element. lastName + " " height);
+		if(element.weight === weight){
+			console.log(" " + element.firstName + " " + element.lastName + " " + weight);
 			return true;
 		}
 		else{
@@ -336,25 +337,55 @@ function getWeight(weight){
 		}
 	});
 }
+
 
 function getOccupation(occupation){
-	var occupationResults=data.filter(function(element){
-		if(element.occupation == occupation){
-			cosole.log(" " + firstName + " " + lastName + " " + occupation)
+	var occupationResults = data.filter(function(element){
+		if(element.occupation === occupation){
+			console.log(" " + element.firstName + " " + element.lastName + " " + occupation)
 			return true;
 		}
 		else{
 			return false;
 		}
-	});
+	}); 
+ }
+
+function getSpouse(people, person){
+	var spouseResults = people.filter(function(element){
+		if(element.id === person.currentSpouse){
+			return true;
+		}
+    });  
 }
 
 
+	// var parentsResults = people.filter(function(person){
+	// 	for(var parent = 0; parent < person.parents.length; parent++)
+	// 	  if(person.parents[0] === person.id){
+
+	// 		return true;
+	// 	})
+function getParents(people, child){
+	var parentsResults = []
+	   for(var parent = 0; parent < child.parents.length; parent++){
+	   	     for(var person = 0; person < people.length; person++){
+	   	     	  if(child.parents[parent] === people[person].id){
+	   	     	  	   parentsResults.push(people[person]);
+	   	     	  }
+	   	     }
+	   }
+}
 
 
+ 
+function convertToAge(bDay) {
+   var delta = Date.now() - bDay.getTime();
+   var big = new Date(delta);
+ 
+   return Math.abs(big.getUTCFullYear() - 1970);
+}
+console.log(getAge(new Date(1992, 2, 2)));
 
-
-
-
-
+ 
 
