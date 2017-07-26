@@ -53,12 +53,15 @@ function mainMenu(person, people){
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
-
-  // TODO: find the person using the name they entered
-
+    var results = people.filter(function(element){
+      if (element.firstName === firstName && element.lastName === lastName){
+        return true;
+      }
+    })
+    return results[0];
 }
-
-// alerts a list of people
+ 
+ // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
@@ -91,10 +94,6 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
-
-
-
-
 function getEyeColor(eyeColor){
   var eyeColorResults=data.filter(function(element){
      if(element.eyeColor ===  eyeColor){
