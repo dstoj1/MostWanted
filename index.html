@@ -74,7 +74,8 @@
                <option value = "yes">Yes</option>
                <option value = "no">No</option>
              </select><br><br>
-           <p class="label">Select Last Name</p>
+          <h2><u>Search by Name</u></h2>
+           <p class="label">Last Name</p>
              <select id = "lastName">
                <option value = "idk">I Don't Know</option>
                <option value = "bob">Bob</option>
@@ -83,7 +84,7 @@
                <option value = "potatoo">Potatoo</option>
                <option value = "madden">Madden</option>
              </select>
-           <p class="label">Select First Name</p>
+           <p class="label">First Name</p>
              <select id = "firstName">
                <option value = "idk">I Don't Know</option>
                <option value = "billy">Billy</option>
@@ -109,7 +110,15 @@
                <option value = "ellen">Ellen</option>
                <option value = "joey">Joey</option>
              </select>
-             <p class="label">Select Eye Color</p>
+           <p class="label">Gender</p>
+             <select id = "gender">
+               <option value = "idk">I Don't Know</option>
+               <option value = "female">Female</option>
+               <option value = "male">Male</option>
+             </select>
+           <h2><u>Search by Attributes</u></h2>
+           		<i>select up to 5 attributes (search filters)</i>
+             <p class="label">Eye Color</p>
              <select id = "eyeColor">
                <option value = "idk">I Don't Know</option>
                <option value = "brown">Brown</option>
@@ -118,13 +127,7 @@
                <option value = "blue">Blue</option>
                <option value = "green">Green</option>
              </select>
-           <p class="label">Select Gender</p>
-             <select id = "gender">
-               <option value = "idk">I Don't Know</option>
-               <option value = "female">Female</option>
-               <option value = "male">Male</option>
-             </select>
-           <p class="label">Select Occupation</p>
+           <p class="label">Occupation</p>
              <select id = "occupation">
                <option value = "idk">I Don't Know</option>
                <option value = "programmer">Programmer</option>
@@ -136,7 +139,37 @@
                <option value = "doctor">Doctor</option>
                <option value = "assisstant">Assisstant</option>
                <option value = "politican">Politican</option>
-             </select>    
+             </select>
+           <p class="label">Age</p>
+             <select id = "age">
+               <option value = "idk">I Don't Know</option>
+               <option value = "30-39">30-39</option>
+               <option value = "40-49">40-49</option>
+               <option value = "50-59">50-59</option>
+               <option value = "60-69">60-69</option>
+               <option value = "70+">70+</option>
+             </select>
+			<p class="label">Height</p>
+             <select id = "height">
+               <option value = "idk">I Don't Know</option>
+               <option value = "<60">59 or less</option>
+               <option value = "60-64">60-64</option>
+               <option value = "65-69">65-69</option>
+               <option value = "70-74">70-74</option>
+               <option value = "75+">75+</option>
+             </select>
+            <p class="label">Weight</p>
+             <select id = "weight">
+               <option value = "idk">I Don't Know</option>
+               <option value = "<125">124 or less</option>
+               <option value = "125-149">125-149</option>
+               <option value = "150-199">150-199</option>
+               <option value = "200-249">200-249</option>
+               <option value = "250+">250+</option>
+             </select>
+             <br>
+             <br>
+
 
            <button onclick="app(data)">Start Searching</button>
       </div>     
