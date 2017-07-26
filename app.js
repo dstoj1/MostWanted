@@ -91,6 +91,122 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
+
+
+
+
+function getEyeColor(eyeColor){
+  var eyeColorResults=data.filter(function(element){
+     if(element.eyeColor ===  eyeColor){
+        console.log(" " + element.firstName + " " + element.lastName + " " + eyeColor);
+        return true;
+      }
+      else{
+      return false;
+      }
+  });   
+}
+
+
+function getHeight(height){
+     var heightResults=data.filter(function(element){
+      if(element.height === height){
+      console.log(" " + element.firstName + " " + element.lastName + " " + height);
+      return true;
+    }
+    else{
+      return false;
+    }
+  }); 
+}
+
+function getAge(age){
+  var ageResults=data.filter(function(element){
+      var birthArray = element.dob.split("/");
+      if(convertToAge(new Date(birthArray[2], birthArray[0], birthArray[1])) === age){
+        console.log(" " + element.firstName + " " + element.lastName + " " + age);
+        return true;
+    }
+    else{
+      return false;
+    }
+  });
+}
+
+function getWeight(weight){
+  var weightResults=data.filter(function(element){
+    if(element.weight === weight){
+      console.log(" " + element.firstName + " " + element.lastName + " " + weight);
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+}
+
+
+function getOccupation(occupation){
+  var occupationResults = data.filter(function(element){
+    if(element.occupation === occupation){
+      console.log(" " + element.firstName + " " + element.lastName + " " + occupation)
+      return true;
+    }
+    else{
+      return false;
+    }
+  }); 
+ }
+
+function getSpouse(people, person){
+  var spouseResults = people.filter(function(element){
+    if(element.id === person.currentSpouse){
+      return true;
+    }
+    });  
+}
+
+function getChildren (people, parent){
+   var childrenResults = people.filter(function(person){
+    for(var i= 0; i < person.parents.length; i++)
+      if(person.parents[i] === parent.id){
+
+    return true;
+     }  
+  });
+    
+   return childrenResults;
+ }  
+
+function getParents(people, child){
+  var parentsResults = []
+     for(var parent = 0; parent < child.parents.length; parent++){
+           for(var person = 0; person < people.length; person++){
+              if(child.parents[parent] === people[person].id){
+                   parentsResults.push(people[person]);
+              }
+           }
+     }
+}
+
+function getSiblings(people, person){
+  var siblingResults = people.filter(function(element){
+      for(var i = 0; i < person.parents.length; i++){
+        if(element.parents.includes(person.parents[i])){
+          return true;
+        }
+      }
+  });   
+          return siblingResults;
+}
+
+ 
+function convertToAge(bDay) {
+   var delta = Date.now() - bDay.getTime();
+   var big = new Date(delta);
+ 
+   return Math.abs(big.getUTCFullYear() - 1970);
+}
 function getInputs () {
   var put1 = document.getElementById("name");
     var z1 = put1.options[put1.selectedIndex].value;
