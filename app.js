@@ -53,14 +53,13 @@ function mainMenu(person, people){
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
-    var results = people.filter(function(element){
+    var nameResults = people.filter(function(element){
       if (element.firstName === firstName && element.lastName === lastName){
         return true;
       }
-    })
-    return results[0];
+    }) 
+    return nameResults[0];
 }
- 
  // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
@@ -187,7 +186,6 @@ function getParents(people, child){
            }
      }
 }
-
 function getSiblings(people, person){
   var siblingResults = people.filter(function(element){
       for(var i = 0; i < person.parents.length; i++){
@@ -199,13 +197,25 @@ function getSiblings(people, person){
           return siblingResults;
 }
 
- 
+function getDescendants(people,person,descendants = []){
+    var children = getChildren(people, person);
+    descendants.push(children);
+       for(var i = 0; i < children.length; i++){
+        getDescendants(people, children[i], descendants);
+  
+  }
+  return descendants;
+}
+
+
 function convertToAge(bDay) {
    var delta = Date.now() - bDay.getTime();
    var big = new Date(delta);
  
    return Math.abs(big.getUTCFullYear() - 1970);
 }
+
+
 function getInputs () {
   var put1 = document.getElementById("name");
     var z1 = put1.options[put1.selectedIndex].value;
