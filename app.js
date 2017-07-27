@@ -39,7 +39,7 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "family":
-   
+   getFamily(people, person);
     break;
     case "descendants":
     getDescendants(people,person);
@@ -411,14 +411,4 @@ function appOccupation(people){
 var choice = getInputs();
 
   var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[4]);
-}
-function convertOnePersonsDOBToAge (element.dob) {
-     var birthday = element.dob.split("/");
-     if(convertToAge(new Date(birthday[2], birthday[0], birthday[1])) === age){
-        console.log("got it");
-       return true;
-   }
-   else{
-     return false;
-   }
 }
