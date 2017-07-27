@@ -1,19 +1,17 @@
-/*
-Build all of your functions for displaying and gathering information below (GUI).
-*/
+
 
 // app is the function called to start the entire application
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-    // TODO: search by name
+   
     break;
     case 'no':
-    // TODO: search by traits
+    
     break;
     default:
-    app(people); // restart app
+    app(people);  
     break;
   }
 }
@@ -35,10 +33,10 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "family":
-    // TODO: get person's family
+   
     break;
     case "descendants":
-    // TODO: get person's descendants
+     
     break;
     case "restart":
     app(people); // restart
