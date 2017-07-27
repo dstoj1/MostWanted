@@ -35,7 +35,7 @@ function mainMenu(person, people){
     // TODO: get person's info
     break;
     case "family":
-   
+   getFamily(people, person);
     break;
     case "descendants":
     getDescendants(people,person);
