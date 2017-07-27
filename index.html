@@ -64,8 +64,6 @@
           </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <button onclick="appName()">nameTest</button>
-<button onclick="appLastName()">lastNameTest</button>
-<button onclick="appFirstName()">firstNameTest</button>
 <button onclick="appEyeColor()">eyeColorTest</button>
 <button onclick="appGender()">genderTest</button>
 <button onclick="appOccupation()">occupationTest</button>
@@ -110,12 +108,8 @@
                <option value = "ellen">Ellen</option>
                <option value = "joey">Joey</option>
              </select>
-           <p class="label">Gender</p>
-             <select id = "gender">
-               <option value = "idk">I Don't Know</option>
-               <option value = "female">Female</option>
-               <option value = "male">Male</option>
-             </select>
+           <button onclick="searchByName(data)">Start Searching by Name</button>
+<br><br>
            <h2><u>Search by Attributes</u></h2>
            		<i>select up to 5 attributes (search filters)</i>
              <p class="label">Eye Color</p>
@@ -171,7 +165,7 @@
              <br>
 
 
-           <button onclick="app(data)">Start Searching</button>
+           <button onclick="app(data)">Start Searching by attributes/filters</button>
       </div>     
     <script src="data.js"></script>
     <script src="app.js"></script>
