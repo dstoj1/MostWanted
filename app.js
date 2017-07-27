@@ -5,15 +5,17 @@ function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
+    var person = searchByName(people);
    
     break;
     case 'no':
-    
+    noAnswer(people);
     break;
     default:
     app(people);  
     break;
-  }
+  } 
+  mainMenu(person, people)
 }
 
 // Menu function to call once you find who you are looking for
@@ -36,6 +38,7 @@ function mainMenu(person, people){
    
     break;
     case "descendants":
+    getDescendants(people,person);
      
     break;
     case "restart":
@@ -48,18 +51,16 @@ function mainMenu(person, people){
   }
 }
 function searchByName(people){
-  var choice = getInputs();
-  var firstName = window.prompt("What is the person's first name?", choice[2]).toLowerCase();
-  var lastName = window.prompt("What is the person's last name?", choice[1]).toLowerCase();
+  var firstName = window.prompt("What is the person's first name?").toLowerCase();
+  var lastName = window.prompt("What is the person's last name?").toLowerCase();
     var nameResults = people.filter(function(element){
-      if (element.firstName === firstName && element.lastName === lastName){
+      if (element.firstName.toLowerCase() === firstName && element.lastName.toLowerCase() === lastName){
         return true;
       }
     })
     console.log(nameResults[0]);
     return nameResults[0];
 }
-
 
  // alerts a list of people
 function displayPeople(people){
@@ -105,7 +106,7 @@ function getEyeColor(eyeColor){
       }
   });   
 }
-
+// app(data);
 
 function getHeight(height){
      var heightResults=data.filter(function(element){
@@ -119,8 +120,9 @@ function getHeight(height){
   }); 
 }
 
-function getAge(age){
-  var ageResults=data.filter(function(element){
+function getAge(people){
+  var age = prompt("What age do you want to search for?");
+  var ageResults=people.filter(function(element){
       var birthArray = element.dob.split("/");
       if(convertToAge(new Date(birthArray[2], birthArray[0], birthArray[1])) == age){
         console.log(" " + element.firstName + " " + element.lastName + " " + age);
@@ -130,10 +132,22 @@ function getAge(age){
       return false;
     }
   });
+
+  var resultString = 'The following people have an age of ' + age + ":\n";
+  for(var i = 0; i < ageResults; i++) {
+    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+  }
+
+  alert(resultString);
+
+  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  if (searchAgain === 'yes'){
+    noAnswer(ageResults);
+  }
 }
 
-function getWeight(weight){
-  var weightResults=data.filter(function(element){
+function getWeight(people){
+  var weightResults=people.filter(function(element){
     if(element.weight === weight){
       console.log(" " + element.firstName + " " + element.lastName + " " + weight);
       return true;
@@ -174,7 +188,18 @@ function getOccupation(occupation){
   });
 }
 
-getCriteria(data);
+function getFamily(people, person){
+  var familyResults = [];
+  familyResults.push(getSpouse(people, person));
+  familyResults.push(getChildren(people, person));
+  familyResults.push(getParents(people, person));
+  familyResults.push(getSiblings(people, person));
+
+console.log(familyResults);
+  return familyResults;
+
+}
+
 
 function getSpouse(people, person){
   var spouseResults = people.filter(function(element){
@@ -182,6 +207,7 @@ function getSpouse(people, person){
       return true;
     }
     });  
+  return spouseResults;
 }
 
 function getChildren (people, parent){
@@ -205,6 +231,7 @@ function getParents(people, child){
               }
            }
      }
+     return parentsResults;
 }
 function getSiblings(people, person){
   var siblingResults = people.filter(function(element){
@@ -241,7 +268,31 @@ function convertOnePersonsDOBToAge (element) {
     return OnePersonsAge;
   }
     
-
+function noAnswer(people){
+var displayOption = prompt("Search by : \n" + "1 = Age \n" + "2 = Height \n" + "3 = Weight \n" + " 4 = Occupation \n" + "5 = EyeColor \n" + "6 = Back to main menu");
+switch(displayOption){
+  case "1":
+  getAge(people);
+  break;
+  case "2":
+  getHeight(people);
+  break;
+  case "3":
+  getWeight(people);
+  break;
+  case "4":
+  getOccupation(people);
+  break;
+  case "5":
+  getEyeColor(people);
+  break;
+  case "6":
+  app(people);
+  return;
+  default:
+  return(people);
+ }
+}
 function getInputs () {
   var put1 = document.getElementById("name");
     var z1 = put1.options[put1.selectedIndex].value;
@@ -251,11 +302,11 @@ function getInputs () {
     var z3 = put3.options[put3.selectedIndex].value;
   var put4 = document.getElementById("eyeColor");
     var z4 = put4.options[put4.selectedIndex].value;
-  var put5 = document.getElementById("gender");
-    var z5 = put5.options[put5.selectedIndex].value;
+ // var put5 = document.getElementById("gender");
+   // var z5 = put5.options[put5.selectedIndex].value;
   var put6 = document.getElementById("occupation");
     var z6 = put6.options[put6.selectedIndex].value;
-  var arrZ = [z1, z2, z3, z4, z5, z6];
+  var arrZ = [z1, z2, z3, z4, /* z5, */ z6];
   console.log(arrZ);
   return arrZ;
 }
