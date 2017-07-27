@@ -58,7 +58,6 @@ function searchByName(people){
         return true;
       }
     })
-    console.log(nameResults[0]);
     return nameResults[0];
 }
 
@@ -294,8 +293,6 @@ switch(displayOption){
  }
 }
 function getInputs () {
-  var put1 = document.getElementById("name");
-    var z1 = put1.options[put1.selectedIndex].value;
   var put2 = document.getElementById("lastName");
     var z2 = put2.options[put2.selectedIndex].value;
   var put3 = document.getElementById("firstName");
@@ -307,6 +304,7 @@ function getInputs () {
   var put6 = document.getElementById("occupation");
     var z6 = put6.options[put6.selectedIndex].value;
   var arrZ = [z1, z2, z3, z4, /* z5, */ z6];
+
   console.log(arrZ);
   return arrZ;
 }
@@ -333,13 +331,18 @@ var choice = getInputs();
 
   var searchType = window.prompt("Do you know the eye color of the person you are looking for?", choice[3]);
 }
-function appGender(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the gender of the person you are looking for?", choice[4]);
-}
 function appOccupation(people){
 var choice = getInputs();
 
-  var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[5]);
+  var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[4]);
+}
+function convertOnePersonsDOBToAge (element.dob) {
+     var birthday = element.dob.split("/");
+     if(convertToAge(new Date(birthday[2], birthday[0], birthday[1])) === age){
+        console.log("got it");
+       return true;
+   }
+   else{
+     return false;
+   }
 }
