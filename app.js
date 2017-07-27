@@ -17,6 +17,33 @@ function app(people){
   } 
   mainMenu(person, people)
 }
+function mainMenu(person, people){
+
+  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
+
+  var displayOption = prompt("Information on " + person.firstName + " " + person.lastName  + 
+
+    "\n 1 = Information \n 2 = Family \n 3 = Descendants \n 4 = Restart");
+
+  switch(displayOption){
+    case "1":
+    getInfo(person);
+    break;
+    case "2":
+    getAFamily(person, people);
+    break;
+    case "3":
+    getDecendents(person, people);
+    break;
+    case "4":
+    app(people); // restart
+    break;
+    case "quit":
+    return; // stop execution
+    default:
+    return wrongAnswer(); // ask again
+  }
+}
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
