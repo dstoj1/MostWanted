@@ -59,6 +59,8 @@ function searchByName(people){
     console.log(nameResults[0]);
     return nameResults[0];
 }
+
+
  // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
@@ -120,7 +122,7 @@ function getHeight(height){
 function getAge(age){
   var ageResults=data.filter(function(element){
       var birthArray = element.dob.split("/");
-      if(convertToAge(new Date(birthArray[2], birthArray[0], birthArray[1])) === age){
+      if(convertToAge(new Date(birthArray[2], birthArray[0], birthArray[1])) == age){
         console.log(" " + element.firstName + " " + element.lastName + " " + age);
         return true;
     }
@@ -154,6 +156,25 @@ function getOccupation(occupation){
     }
   }); 
  }
+
+ function getCriteria(people){ 
+   var weight = window.prompt("What is the weight of the person you are looking for?");
+   var height  = window.prompt("What is the height of the person you are looking for?"); 
+   var eyeColor = window.prompt("What is the eyeColor of the person you are looking for?");
+   var occupation = window.prompt("What is the occupation of the person you are looking for?");
+   var age = window.prompt("What is the age of the person you are looking for?");
+   
+
+   var criteriaResults = people.filter(function(element){
+   if(element.weight == weight && element.height == height && element.eyeColor === eyeColor && element.occupation === occupation && convertOnePersonsDOBToAge(element) == age){
+          window.alert(" " + element.firstName);
+          return true;
+            
+             }
+   });
+}
+
+getCriteria(data);
 
 function getSpouse(people, person){
   var spouseResults = people.filter(function(element){
@@ -214,6 +235,12 @@ function convertToAge(bDay) {
    return Math.abs(big.getUTCFullYear() - 1970);
 }
 
+function convertOnePersonsDOBToAge (element) {
+    var birthday = element.dob.split("/");
+    var OnePersonsAge = convertToAge(new Date(birthday[2], birthday[0], birthday[1]));
+    return OnePersonsAge;
+  }
+    
 
 function getInputs () {
   var put1 = document.getElementById("name");
