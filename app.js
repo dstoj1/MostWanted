@@ -170,8 +170,8 @@ function getOccupation(occupation){
           window.alert(" " + element.firstName);
           return true;
             
-             }
-   });
+    }
+  });
 }
 
 getCriteria(data);
