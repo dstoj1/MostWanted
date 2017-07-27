@@ -94,8 +94,9 @@ function yesNo(input){
 function chars(input){
   return true; // default validation only
 }
-function getEyeColor(eyeColor){
-  var eyeColorResults=data.filter(function(element){
+function getEyeColor(people){
+  var eyeColor = prompt("What eyecolor do you want to search for?");
+  var eyeColorResults=people.filter(function(element){
      if(element.eyeColor ===  eyeColor){
         console.log(" " + element.firstName + " " + element.lastName + " " + eyeColor);
         return true;
@@ -104,11 +105,22 @@ function getEyeColor(eyeColor){
       return false;
       }
   });   
+  var resultString = 'The following people have an eyecolor  of ' + eyecolor + ":\n";
+  for(var i = 0; i < eyeColorResults; i++) {
+    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+  }
+   alert(resultString);
+
+  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  if (searchAgain === 'yes'){
+    noAnswer(eyeColorResults);
+  }
 }
 // app(data);
 
-function getHeight(height){
-     var heightResults=data.filter(function(element){
+function getHeight(people){
+    var height = prompt("What height do you want to search for?");
+     var heightResults=people.filter(function(element){
       if(element.height === height){
       console.log(" " + element.firstName + " " + element.lastName + " " + height);
       return true;
@@ -117,6 +129,16 @@ function getHeight(height){
       return false;
     }
   }); 
+     var resultString = 'The following people have a height of ' + height + ":\n";
+  for(var i = 0; i < heightResults; i++) {
+    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+  }
+   alert(resultString);
+
+  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  if (searchAgain === 'yes'){
+    noAnswer(heightResults);
+  }
 }
 
 function getAge(people){
@@ -146,6 +168,7 @@ function getAge(people){
 }
 
 function getWeight(people){
+  var weight = prompt("What weight do you want to search for?");
   var weightResults=people.filter(function(element){
     if(element.weight === weight){
       console.log(" " + element.firstName + " " + element.lastName + " " + weight);
@@ -155,11 +178,21 @@ function getWeight(people){
       return false;
     }
   });
+  var resultString = 'The following people have a weight of ' + weight + ":\n";
+  for(var i = 0; i < weightResults; i++) {
+    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+  }
+   alert(resultString);
+
+  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  if (searchAgain === 'yes'){
+    noAnswer(weightResults);
+  }
 }
 
-
-function getOccupation(occupation){
-  var occupationResults = data.filter(function(element){
+function getOccupation(people){
+  var occupation = prompt("What occupation do you want to search for?");
+  var occupationResults = people.filter(function(element){
     if(element.occupation === occupation){
       console.log(" " + element.firstName + " " + element.lastName + " " + occupation)
       return true;
@@ -168,6 +201,16 @@ function getOccupation(occupation){
       return false;
     }
   }); 
+  var resultString = 'The following people have an occupation of ' + occupation + ":\n";
+     for(var i = 0; i < occupationResults; i++) {
+    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+  }
+   alert(resultString);
+
+  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+     if (searchAgain === 'yes'){
+      noAnswer(occupationResults);
+  }
  }
 
  function getCriteria(people){ 
@@ -299,12 +342,13 @@ function getInputs () {
     var z3 = put3.options[put3.selectedIndex].value;
   var put4 = document.getElementById("eyeColor");
     var z4 = put4.options[put4.selectedIndex].value;
+ 
  // var put5 = document.getElementById("gender");
    // var z5 = put5.options[put5.selectedIndex].value;
   var put6 = document.getElementById("occupation");
     var z6 = put6.options[put6.selectedIndex].value;
   var arrZ = [z1, z2, z3, z4, /* z5, */ z6];
-
+ 
   console.log(arrZ);
   return arrZ;
 }
