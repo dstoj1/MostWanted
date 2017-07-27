@@ -51,14 +51,14 @@ function mainMenu(person, people){
 }
 function searchByName(people){
   var choice = getInputs();
-  var firstName = window.prompt("What is the person's first name?", choice[2]).toLowerCase();
-  var lastName = window.prompt("What is the person's last name?", choice[1]).toLowerCase();
+  var firstName = window.prompt("What is the person's first name?", choice[1]).toLowerCase();
+  var lastName = window.prompt("What is the person's last name?", choice[0]).toLowerCase();
     var nameResults = people.filter(function(element){
-      if (element.firstName === firstName && element.lastName === lastName){
+      if (element.firstName.toLowerCase() === (firstName) && element.lastName.toLowerCase() === (lastName)){
+        window.alert(" " + element.firstName + " " + element.lastName);
         return true;
       }
     })
-    console.log(nameResults[0]);
     return nameResults[0];
 }
  // alerts a list of people
@@ -218,19 +218,15 @@ function convertToAge(bDay) {
 
 
 function getInputs () {
-  var put1 = document.getElementById("name");
-    var z1 = put1.options[put1.selectedIndex].value;
   var put2 = document.getElementById("lastName");
     var z2 = put2.options[put2.selectedIndex].value;
   var put3 = document.getElementById("firstName");
     var z3 = put3.options[put3.selectedIndex].value;
   var put4 = document.getElementById("eyeColor");
     var z4 = put4.options[put4.selectedIndex].value;
-  var put5 = document.getElementById("gender");
+  var put5 = document.getElementById("occupation");
     var z5 = put5.options[put5.selectedIndex].value;
-  var put6 = document.getElementById("occupation");
-    var z6 = put6.options[put6.selectedIndex].value;
-  var arrZ = [z1, z2, z3, z4, z5, z6];
+  var arrZ = [z2, z3, z4, z5];
   console.log(arrZ);
   return arrZ;
 }
@@ -257,13 +253,18 @@ var choice = getInputs();
 
   var searchType = window.prompt("Do you know the eye color of the person you are looking for?", choice[3]);
 }
-function appGender(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the gender of the person you are looking for?", choice[4]);
-}
 function appOccupation(people){
 var choice = getInputs();
 
-  var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[5]);
+  var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[4]);
+}
+function convertOnePersonsDOBToAge (element.dob) {
+     var birthday = element.dob.split("/");
+     if(convertToAge(new Date(birthday[2], birthday[0], birthday[1])) === age){
+        console.log("got it");
+       return true;
+   }
+   else{
+     return false;
+   }
 }
