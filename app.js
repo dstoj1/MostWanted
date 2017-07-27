@@ -47,15 +47,16 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
-
 function searchByName(people){
-  var firstName = promptFor("What is the person's first name?", chars);
-  var lastName = promptFor("What is the person's last name?", chars);
+  var choice = getInputs();
+  var firstName = window.prompt("What is the person's first name?", choice[2]).toLowerCase();
+  var lastName = window.prompt("What is the person's last name?", choice[1]).toLowerCase();
     var nameResults = people.filter(function(element){
       if (element.firstName === firstName && element.lastName === lastName){
         return true;
       }
-    }) 
+    })
+    console.log(nameResults[0]);
     return nameResults[0];
 }
  // alerts a list of people
@@ -249,16 +250,6 @@ var choice = getInputs();
     break;
   }
   }
-function appLastName(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the last name of the person you are looking for?", choice[1]);
-  }
-function appFirstName(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the first name of the person you are looking for?", choice[2]);
-}
 function appEyeColor(people){
 var choice = getInputs();
 
