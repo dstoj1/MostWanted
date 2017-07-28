@@ -156,7 +156,7 @@ function getAge(people){
   });
 
   var resultString = 'The following people have an age of ' + age + ":\n";
-  for(var i = 0; i < ageResults; i++) {
+  for(var i = 0; i < ageResults.length; i++) {
     resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
   }
 
