@@ -15,7 +15,7 @@ function app(people){
     app(people);  
     break;
   } 
-  mainMenu(person, people)
+  mainMenu(person, people);
 }
 
 function mainMenu(person, people){
@@ -103,12 +103,14 @@ function getEyeColor(people){
       else{
       return false;
       }
-  });   
-  var resultString = 'The following people have an eyecolor  of ' + eyecolor + ":\n";
-  for(var i = 0; i < eyeColorResults; i++) {
+    }); 
+    
+  var resultString = "The following people have an eyecolor of " + eyeColor + ":\n";
+   for(var i = 0; i < eyeColorResults.length; i++) {
     resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
   }
    alert(resultString);
+  
 
   var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
   if (searchAgain === 'yes'){
@@ -128,8 +130,8 @@ function getHeight(people){
       return false;
     }
   }); 
-     var resultString = 'The following people have a height of ' + height + ":\n";
-  for(var i = 0; i < heightResults; i++) {
+     var resultString = "The following people have a height of " + height + ":\n";
+  for(var i = 0; i < heightResults.length; i++) {
     resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
   }
    alert(resultString);
@@ -178,7 +180,7 @@ function getWeight(people){
     }
   });
   var resultString = 'The following people have a weight of ' + weight + ":\n";
-  for(var i = 0; i < weightResults; i++) {
+  for(var i = 0; i < weightResults.length; i++) {
     resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
   }
    alert(resultString);
@@ -201,7 +203,7 @@ function getOccupation(people){
     }
   }); 
   var resultString = 'The following people have an occupation of ' + occupation + ":\n";
-     for(var i = 0; i < occupationResults; i++) {
+     for(var i = 0; i < occupationResults.length; i++) {
     resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
   }
    alert(resultString);
