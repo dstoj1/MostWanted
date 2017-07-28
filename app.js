@@ -18,13 +18,6 @@ function app(people){
   mainMenu(person, people)
 }
 
-
-function mainMenu(person, people){
-
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
- 
-
-// Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
