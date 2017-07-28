@@ -354,8 +354,8 @@ function getInputs () {
 }
 
 function getInfo(people, person){
-    alert("Gender: " + element.gender + "\nDate Of Birth: " + element.dob + "\nHeight: "
-  + element.height + "\nWeight: " + element.weight + "\nEye Color: " + element.eyeColor);
+    alert("Gender: " + person.gender + "Date Of Birth: " + person.dob + "Height: "
+  + person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor);
     return mainMenu(people, person);
 }
 app(data);
