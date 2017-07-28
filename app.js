@@ -244,9 +244,9 @@ function getSpouse(people, person){
   return spouseResults;
 }
 
-function getChildren (people, parent){
-   var childrenResults = people.filter(function(person){
-    for(var i= 0; i < person.parents.length; i++)
+function getChildren (people, person){
+   var childrenResults = people.filter(function(element){
+    for(var i= 0; i < element.parents.length; i++)
       if(person.parents[i] === parent.id){
 
     return true;
@@ -256,19 +256,24 @@ function getChildren (people, parent){
    return childrenResults;
  }  
 
-function getParents(people, child){
+function getParents(people, person){
   var parentsResults = []
-     for(var parent = 0; parent < child.parents.length; parent++){
-           for(var person = 0; person < people.length; person++){
-              if(child.parents[parent] === people[person].id){
-                   parentsResults.push(people[person]);
-              }
-           }
-     }
+     parentsResults = people.filter(function(element){
+      if(element.id === person.parents[0] || element.id === person.parents[1]){
+        return true;
+      }
+      else{
+        return false;
+      }
+     });
      return parentsResults;
 }
 function getSiblings(people, person){
   var siblingResults = people.filter(function(element){
+    if(element.id === person.id){
+      return false;
+    }
+
       for(var i = 0; i < person.parents.length; i++){
         if(element.parents.includes(person.parents[i])){
           return true;
