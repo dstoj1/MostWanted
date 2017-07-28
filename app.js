@@ -339,7 +339,8 @@ switch(displayOption){
   return(people);
  }
 }
-function mainMenu(person, people){
+ 
+ function mainMenu(people, person){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
@@ -352,10 +353,10 @@ function mainMenu(person, people){
     getInfo(person);
     break;
     case "2":
-    getAFamily(person, people);
+    getFamily(people, person;
     break;
     case "3":
-    getDecendents(person, people);
+    getDecendents(people, person);
     break;
     case "4":
     app(people); // restart
@@ -385,6 +386,11 @@ function getInputs () {
   return arrZ;
 }
 
+function getInfo(people, person){
+    alert("Gender: " + element.gender + "\nDate Of Birth: " + element.dob + "\nHeight: "
+  + element.height + "\nWeight: " + element.weight + "\nEye Color: " + element.eyeColor);
+    return mainMenu(people, person);
+}
 
 function appName(people){
 var choice = getInputs();
