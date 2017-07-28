@@ -17,6 +17,8 @@ function app(people){
   } 
   mainMenu(person, people)
 }
+
+
 function mainMenu(person, people){
 
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
@@ -353,7 +355,7 @@ switch(displayOption){
     getInfo(person);
     break;
     case "2":
-    getFamily(people, person;
+    getFamily(people, person);
     break;
     case "3":
     getDecendents(people, person);
@@ -391,30 +393,4 @@ function getInfo(people, person){
   + element.height + "\nWeight: " + element.weight + "\nEye Color: " + element.eyeColor);
     return mainMenu(people, person);
 }
-
-function appName(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the name of the person you are looking for? Please enter 'yes' or 'no'", choice[0]);
-  switch(searchType){
-    case 'yes':
-    // TODO: function integration
-    break;
-    case 'no':
-    // TODO: search by traits
-    break;
-    default:
-    app(people); // restart app
-    break;
-  }
-  }
-function appEyeColor(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the eye color of the person you are looking for?", choice[3]);
-}
-function appOccupation(people){
-var choice = getInputs();
-
-  var searchType = window.prompt("Do you know the occupation of the person you are looking for?", choice[4]);
-}
+app(data);
