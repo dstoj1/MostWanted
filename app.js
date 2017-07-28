@@ -31,7 +31,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+    getInfo(people, person);
     break;
     case "family":
    getFamily(people, person);
@@ -333,34 +333,6 @@ switch(displayOption){
   default:
   return(people);
  }
-}
- 
- function mainMenu(people, person){
-
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
-
-  var displayOption = prompt("Information on " + element.firstName + " " + element.lastName  + 
-
-    "\n 1 = Information \n 2 = Family \n 3 = Descendants \n 4 = Restart");
-
-  switch(displayOption){
-    case "1":
-    getInfo(person);
-    break;
-    case "2":
-    getFamily(people, person);
-    break;
-    case "3":
-    getDecendents(people, person);
-    break;
-    case "4":
-    app(people); // restart
-    break;
-    case "quit":
-    return; // stop execution
-    default:
-    return IncorrectAnswer(); // ask again
-  }
 }
 
 function getInputs () {
