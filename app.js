@@ -1,6 +1,5 @@
 
 
-// app is the function called to start the entire application
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
@@ -20,7 +19,6 @@ function app(people){
 
 function mainMenu(person, people){
 
-  /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if(!person){
     alert("Could not find that individual.");
@@ -41,12 +39,12 @@ function mainMenu(person, people){
      
     break;
     case "restart":
-    app(people); // restart
+    app(people);
     break;
     case "quit":
-    return; // stop execution
+    return;
     default:
-    return mainMenu(person, people); // ask again
+    return mainMenu(person, people); 
   }
 }
 function searchByName(people){
@@ -60,7 +58,6 @@ function searchByName(people){
     return nameResults[0];
 }
 
- // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
@@ -68,15 +65,11 @@ function displayPeople(people){
 }
 
 function displayPerson(person){
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
 
-// function that prompts and validates user input
 function promptFor(question, valid){
   do{
     var response = prompt(question).trim();
@@ -84,14 +77,12 @@ function promptFor(question, valid){
   return response;
 }
 
-// helper function to pass into promptFor to validate yes/no answers
 function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
-// helper function to pass in as default promptFor validation
 function chars(input){
-  return true; // default validation only
+  return true; 
 }
 function getEyeColor(people){
   var eyeColor = prompt("What eyecolor do you want to search for?");
@@ -335,24 +326,6 @@ switch(displayOption){
   default:
   return(people);
  }
-}
-
-function getInputs () {
-  var put2 = document.getElementById("lastName");
-    var z2 = put2.options[put2.selectedIndex].value;
-  var put3 = document.getElementById("firstName");
-    var z3 = put3.options[put3.selectedIndex].value;
-  var put4 = document.getElementById("eyeColor");
-    var z4 = put4.options[put4.selectedIndex].value;
- 
- // var put5 = document.getElementById("gender");
-   // var z5 = put5.options[put5.selectedIndex].value;
-  var put6 = document.getElementById("occupation");
-    var z6 = put6.options[put6.selectedIndex].value;
-  var arrZ = [z1, z2, z3, z4, /* z5, */ z6];
- 
-  console.log(arrZ);
-  return arrZ;
 }
 
 function getInfo(people, person){
