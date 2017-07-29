@@ -32,17 +32,28 @@ function mainMenu(person, people){
     getInfo(people, person);
     break;
     case "family":
-   getFamily(people, person);
+    var family;
+    family = getFamily(people, person);
+    alert(family);
+    mainMenu(person, people);
     break;
     case "descendants":
-    getDescendants(people,person);
-     
+    var descendants;
+    var descendantsNames;
+    descendants = getDescendants(people,person);
+    descendantsNames = descendants.map(function(element) {
+      return element.firstName +" " + element.lastName+"\n";
+    });
+    descendantsNames = descendantsNames.join("");
+    alert(descendantsNames);
+    mainMenu(person, people);
     break;
     case "restart":
     app(people);
     break;
     case "quit":
-    return;
+    return false;
+    break;
     default:
     return mainMenu(person, people); 
   }
@@ -103,9 +114,21 @@ function getEyeColor(people){
    alert(resultString);
   
 
-  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
-  if (searchAgain === 'yes'){
-    noAnswer(eyeColorResults);
+  //var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  //if (searchAgain === 'yes'){
+    //noAnswer(eyeColorResults);
+  //}
+ if (eyeColorResults.length > 1){
+  alert("Multiple people found please refine your search.");
+  noAnswer(eyeColorResults)
+ }
+ else if(eyeColorResults.length === 0){
+  alert("No person found, please use a different search.");
+  app(data);
+ }
+  else{
+    var person = eyeColorResults[0];
+    mainMenu(person, people);
   }
 }
 // app(data);
@@ -127,9 +150,21 @@ function getHeight(people){
   }
    alert(resultString);
 
-  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
-  if (searchAgain === 'yes'){
-    noAnswer(heightResults);
+  //var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  //if (searchAgain === 'yes'){
+    //noAnswer(heightResults);
+  //}
+  if (heightResults.length > 1){
+  alert("Multiple people found please refine your search.");
+  noAnswer(heightResults);
+ }
+ else if(heightResults.length === 0){
+  alert("No person found, please use a different search.");
+  app(data);
+ }
+  else{
+    var person = heightResults[0];
+    mainMenu(person, people);
   }
 }
 
@@ -148,14 +183,26 @@ function getAge(people){
 
   var resultString = 'The following people have an age of ' + age + ":\n";
   for(var i = 0; i < ageResults.length; i++) {
-    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+    resultString += ageResults[i].firstName + ' ' + ageResults[i].lastName + "\n";
   }
 
   alert(resultString);
 
-  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
-  if (searchAgain === 'yes'){
-    noAnswer(ageResults);
+  //var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  //if (searchAgain === 'yes'){
+    //noAnswer(ageResults);
+  //}
+  if (ageResults.length > 1){
+  alert("Multiple people found please refine your search.");
+  noAnswer(ageResults)
+ }
+ else if(ageResults.length === 0){
+  alert("No person found, please use a different search.");
+  app(data);
+ }
+  else{
+    var person = ageResults[0];
+    mainMenu(person, people);
   }
 }
 
@@ -172,13 +219,25 @@ function getWeight(people){
   });
   var resultString = 'The following people have a weight of ' + weight + ":\n";
   for(var i = 0; i < weightResults.length; i++) {
-    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+    resultString += weightResults[i].firstName + ' ' + weightResults[i].lastName + "\n";
   }
    alert(resultString);
 
-  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
-  if (searchAgain === 'yes'){
-    noAnswer(weightResults);
+  //var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+  //if (searchAgain === 'yes'){
+    //noAnswer(weightResults);
+  //}
+  if (weightResults.length > 1){
+  alert("Multiple people found please refine your search.");
+  noAnswer(weightResults)
+ }
+ else if(weightResults.length === 0){
+  alert("No person found, please use a different search.");
+  app(data);
+ }
+  else{
+    var person = weightResults[0];
+    mainMenu(person, people);
   }
 }
 
@@ -195,17 +254,29 @@ function getOccupation(people){
   }); 
   var resultString = 'The following people have an occupation of ' + occupation + ":\n";
      for(var i = 0; i < occupationResults.length; i++) {
-    resultString += people[i].firstName + ' ' + people[i].lastName + "\n";
+    resultString += occupationResults[i].firstName + ' ' + occupationResults[i].lastName + "\n";
   }
    alert(resultString);
 
-  var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
-     if (searchAgain === 'yes'){
-      noAnswer(occupationResults);
+  //var searchAgain = prompt("Do you want to refine your search further? ('yes')").toLowerCase();
+    // if (searchAgain === 'yes'){
+      //noAnswer(occupationResults);
+  //}
+  if (occupationResults.length > 1){
+  alert("Multiple people found please refine your search.");
+  noAnswer(occupationResults)
+ }
+ else if(occupationResults.length === 0){
+  alert("No person found, please use a different search.");
+  app(data);
+ }
+  else{
+    var person = occupationResults[0];
+    mainMenu(person, people);
   }
  }
 
- function getCriteria(people){ 
+/* function getCriteria(people){ 
    var weight = window.prompt("What is the weight of the person you are looking for?");
    var height  = window.prompt("What is the height of the person you are looking for?"); 
    var eyeColor = window.prompt("What is the eyeColor of the person you are looking for?");
@@ -221,15 +292,21 @@ function getOccupation(people){
     }
   });
 }
-
+*/
 function getFamily(people, person){
-  var familyResults = [];
-  familyResults.push(getSpouse(people, person));
-  familyResults.push(getChildren(people, person));
-  familyResults.push(getParents(people, person));
-  familyResults.push(getSiblings(people, person));
-
-console.log(familyResults);
+  var familyResults = person.firstName +"'s family:\n";
+  familyResults.+= getSpouse(people, person).map(function(element) {
+    return element.firstName + " " + element.lastName + "\n";
+  });
+  familyResults += getChildren(people, person).map(function(element) {
+    return element.firstName + " " + element.lastName + "\n";
+  });
+  familyResults+=getParents(people, person).map(function(element) {
+    return element.firstName + " " + element.lastName + "\n";
+  });
+  familyResults+=getSiblings(people, person).map(function(element) {
+    return element.firstName + " " + element.lastName + "\n";
+  });
   return familyResults;
 
 }
@@ -240,6 +317,9 @@ function getSpouse(people, person){
     if(element.id === person.currentSpouse){
       return true;
     }
+    else{
+      return false;
+    }
     });  
   return spouseResults;
 }
@@ -247,10 +327,13 @@ function getSpouse(people, person){
 function getChildren (people, person){
    var childrenResults = people.filter(function(element){
     for(var i= 0; i < element.parents.length; i++)
-      if(person.parents[i] === parent.id){
+      if(person.id === element.parents[i]){
 
     return true;
-     }  
+     } 
+     else{
+      return false;
+     } 
   });
     
    return childrenResults;
@@ -283,13 +366,16 @@ function getSiblings(people, person){
           return siblingResults;
 }
 
-function getDescendants(people,person,descendants = []){
+function getDescendants(people,person){
+    var descendants = [];
     var children = getChildren(people, person);
-    descendants.push(children);
+    descendants = descendants.concat(children);
+    var childrenDescendants = [];
        for(var i = 0; i < children.length; i++){
-        getDescendants(people, children[i], descendants);
+        childrenDescendants.concat(getDescendants(people, children[i]));
   
   }
+  descendants = descendants.concat(childrenDescendants)
   return descendants;
 }
 
@@ -308,34 +394,35 @@ function convertOnePersonsDOBToAge (element) {
   }
     
 function noAnswer(people){
-var displayOption = prompt("Search by : \n" + "1 = Age \n" + "2 = Height \n" + "3 = Weight \n" + " 4 = Occupation \n" + "5 = EyeColor \n" + "6 = Back to main menu");
+var displayOption = prompt("Search by : \n" + "1 = Age \n" + "2 = Height \n" + "3 = Weight \n" + " 4 = Occupation \n" + "5 = EyeColor \n" + "6 = restart");
+var person 
 switch(displayOption){
   case "1":
-  getAge(people);
+  person = getAge(people);
   break;
   case "2":
-  getHeight(people);
+  person = getHeight(people);
   break;
   case "3":
-  getWeight(people);
+  person = getWeight(people);
   break;
   case "4":
-  getOccupation(people);
+  person = getOccupation(people);
   break;
   case "5":
-  getEyeColor(people);
+  person = getEyeColor(people);
   break;
   case "6":
   app(people);
   return;
   default:
-  return(people);
+  return(person);
  }
 }
 
 function getInfo(people, person){
-    alert("Gender: " + person.gender + "Date Of Birth: " + person.dob + "Height: "
-  + person.height + "Weight: " + person.weight + "Eye Color: " + person.eyeColor);
-    return mainMenu(people, person);
+    alert("Gender: " + person.gender + "\n Date Of Birth: " + person.dob + "\n Height: "
+  + person.height + "\n Weight: " + person.weight + "\n Eye Color: " + person.eyeColor);
+    return mainMenu(person, people);
 }
 app(data);
