@@ -1,4 +1,4 @@
-
+"use strict"
 
 function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
@@ -42,7 +42,7 @@ function mainMenu(person, people){
     var descendantsNames;
     descendants = getDescendants(people,person);
     descendantsNames = descendants.map(function(element) {
-      return element.firstName +" " + element.lastName+"\n";
+      return element.firstName + " " + element.lastName +"\n";
     });
     descendantsNames = descendantsNames.join("");
     alert(descendantsNames);
@@ -136,7 +136,7 @@ function getEyeColor(people){
 function getHeight(people){
     var height = prompt("What height do you want to search for?");
      var heightResults=people.filter(function(element){
-      if(element.height === height){
+      if(element.height == height){
       console.log(" " + element.firstName + " " + element.lastName + " " + height);
       return true;
     }
@@ -209,7 +209,7 @@ function getAge(people){
 function getWeight(people){
   var weight = prompt("What weight do you want to search for?");
   var weightResults=people.filter(function(element){
-    if(element.weight === weight){
+    if(element.weight == weight){
       console.log(" " + element.firstName + " " + element.lastName + " " + weight);
       return true;
     }
@@ -295,7 +295,7 @@ function getOccupation(people){
 */
 function getFamily(people, person){
   var familyResults = person.firstName +"'s family:\n";
-  familyResults.+= getSpouse(people, person).map(function(element) {
+  familyResults += getSpouse(people, person).map(function(element) {
     return element.firstName + " " + element.lastName + "\n";
   });
   familyResults += getChildren(people, person).map(function(element) {
