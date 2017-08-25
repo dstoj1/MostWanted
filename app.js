@@ -370,12 +370,10 @@ function getDescendants(people,person){
     var descendants = [];
     var children = getChildren(people, person);
     descendants = descendants.concat(children);
-    var childrenDescendants = [];
-       for(var i = 0; i < children.length; i++){
-        childrenDescendants.concat(getDescendants(people, children[i]));
+    for(var i = 0; i < descendants.length; i++){
+    descendants.concat(getDescendants(people, descendants[i]));
   
   }
-  descendants = descendants.concat(childrenDescendants)
   return descendants;
 }
 
@@ -422,7 +420,7 @@ switch(displayOption){
 
 function getInfo(people, person){
     alert("Gender: " + person.gender + "\n Date Of Birth: " + person.dob + "\n Height: "
-  + person.height + "\n Weight: " + person.weight + "\n Eye Color: " + person.eyeColor);
+  + person.height + "\n Weight: " + person.weight + "\n Eye Color: " + person.eyeColor + "\n Occupation:" + person.occupation);
     return mainMenu(person, people);
 }
 app(data);
