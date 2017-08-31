@@ -371,7 +371,7 @@ function getDescendants(people,person){
     var children = getChildren(people, person);
     descendants = descendants.concat(children);
     for(var i = 0; i < descendants.length; i++){
-    descendants.concat(getDescendants(people, descendants[i]));
+    descendants = descendants.concat(getDescendants(people, descendants[i]));
   
   }
   return descendants;
